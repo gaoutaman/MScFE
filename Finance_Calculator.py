@@ -17,15 +17,20 @@
 - GUI? Tkinter
 """
 
+import numpy as np
+import pandas as pd
+
 
 # Savings calculator
 def calculate_balance(interest_type, principle, interest, time):
+    balance = principle
     if interest_type == "1":
         balance = principle * (1 + interest * time)
     elif interest_type == "2":
-        pass
+        balance = principle * (1 + interest) ** time
     else:
         return
+    return balance
 
 
 while True:
@@ -51,10 +56,12 @@ while True:
         interest = float(input("Enter interest rate: "))
         time = float(input("Enter term (years): "))
         balance = calculate_balance(interest_type, principle, interest, time)
+        print(f"Balance: {balance}")
+
     elif choice == "2":
-        break
+        continue
     elif choice == "3":
-        break
+        continue
     elif choice == "4":
         print("Exiting application...")
         exit()
